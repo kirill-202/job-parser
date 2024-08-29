@@ -2,67 +2,46 @@ package main
 
 import (
 	"fmt"
-	//"net/http"
+
 	//"net/smtp"
-	"os"
-	//"golang.org/x/net/html"
-	"bufio"
-	"strings"
+	// "golang.org/x/net/html"
 )
 
-//https://startup.jobs 
+//https://startup.jobs
 
 
 
-type Job struct {
-	Name string
+type JobSearch struct {
+	Title JobTitle
 	WebAddress string
 }
 
 
+// func FindJobDescrpition(jobDescription string) (Job, error) {
+// 	html.
 
-// func (page LandingPage) FindJobDescrpition(JobDescription string) (Job, error) {
 // 	fmt.Println("not implemented yet")
 // }
 
-func traverse() {
+// func traverse() {
 
-}
+// }
 
-func getInput(prompt string) string {
-	scanner := bufio.NewScanner(os.Stdin)
-	for {
-		fmt.Print(prompt)
-		if scanner.Scan() {
-			line := scanner.Text()
-			trimmed_line := strings.TrimSpace(line)
-			if len(trimmed_line) > 0 {
-				return trimmed_line
-			}
-			fmt.Println("Input cannot be empty. Please try again.")
-		}
-
-		if err := scanner.Err(); err != nil {
-			fmt.Println("Error reading input:", err)
-			os.Exit(1)
-		}
-	}
-}
 
 
 
 func main() {
 
-	var KeyWords []string
-	var BaseWebsite string
+	var job JobSearch
 
 	fmt.Println("Program has started...")
 
-	KeyWords = strings.Fields(getInput("Please provide key words for job search: "))
-	BaseWebsite = getInput("Please provide the job website to parse in the format 'website.com': ")
+	job.Title.Name = getInput("Please provide key words for job search: ")
+	job.WebAddress = getInput("Please provide the job website to parse in the format 'website.com': ")
 
-	fmt.Println("Scanned words:", KeyWords)
-	fmt.Println("Scanned website:", BaseWebsite)
+	fmt.Println("Scanned words:", job.Title.Name)
+	fmt.Println("Scanned website:", job.WebAddress)
 	fmt.Println("Parsing has started...")
+	job.Title.getSynonyms()
 
 }
