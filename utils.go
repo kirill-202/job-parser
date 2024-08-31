@@ -14,6 +14,8 @@ import (
 const score int = 20000000
 
 //logic related to scanning input from users
+//
+//
 
 func getInput(prompt string) string {
 	scanner := bufio.NewScanner(os.Stdin)
@@ -38,6 +40,8 @@ func getInput(prompt string) string {
 
 
 //logic related to adding titles
+//
+//
 
 
 type JobTitle struct {
@@ -91,7 +95,7 @@ func fetchSynonymsFromAPI(title string) ([]DataMuseSynonym, error) {
 		return nil, fmt.Errorf("error parsing JSON: %w", err)
 	}
 
-	fmt.Printf("Unfiltered synonyms: %v\n", synonyms)
+	//fmt.Printf("Unfiltered synonyms: %v\n", synonyms)
 	return synonyms, nil
 }
 
